@@ -8,7 +8,8 @@ import SwiftUI
             @State var t = 0
             @Loadable var loadable
             var body: some View {
-                Text("Test")
+                let _ = postBodyEvaluationNotification()
+                Text("Test \(t)")
                     .task {
                         await _loadable.loadAsync { t += 1 }
                     }
@@ -29,7 +30,8 @@ import SwiftUI
             @State var t = 0
             @Loadable var loadable
             var body: some View {
-                Text("Test")
+                let _ = postBodyEvaluationNotification()
+                Text("Test \(t)")
                     .onAppear {
                         _loadable.loadSync { t += 1 }
                     }
