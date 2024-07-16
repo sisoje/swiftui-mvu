@@ -65,7 +65,8 @@ DerivedData/
 ### Tuist derived files ###
 graph.dot
 Derived/
-*.swift
+App.swift
+Tests.swift
 
 ### Tuist managed dependencies ###
 Tuist/.build
