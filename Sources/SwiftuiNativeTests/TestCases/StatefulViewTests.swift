@@ -16,8 +16,7 @@ final class StatefulViewTests: XCTestCase {
             @State var count = 0
             var body: some View {
                 let _ = postBodyEvaluationNotification()
-                Text("Test \(count)")
-                    .task {
+                count.task {
                         count += 1
                     }
             }

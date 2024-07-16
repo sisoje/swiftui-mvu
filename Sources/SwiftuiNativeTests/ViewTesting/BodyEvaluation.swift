@@ -12,30 +12,24 @@ extension Notification: @unchecked Sendable {
     // this silences the "notification is not sendable" warning
 }
 
-extension NotificationCenter {
-    @MainActor func getBodyEvaluationObject<T>(timeout: TimeInterval) async throws -> T {
+extension View {
+    @MainActor static func getTestView(timeout: TimeInterval = 1) async throws -> Self {
+        // normally we get notification immediately but if there is any problem we dont want to wait forever
         let timeoutTask = Task {
             try await Task.sleep(nanoseconds: UInt64(timeout * 1_000_000_000))
             // if timeout happens we post nil to unblock the await
-            post(name: .bodyEvaluationNotification, object: nil)
+            NotificationCenter.default.post(name: .bodyEvaluationNotification, object: nil)
         }
         defer { timeoutTask.cancel() }
-        for await n in notifications(named: .bodyEvaluationNotification) {
+        for await n in NotificationCenter.default.notifications(named: .bodyEvaluationNotification) {
             guard let v = n.object else {
-                throw NSError(domain: "Make sure you add 'let _ = postBodyEvaluationNotification()' to the view body", code: 0)
+                throw NSError(domain: "Add 'let _ = postBodyEvaluationNotification()' and refer to the state inside the body", code: 0)
             }
-            guard let v = v as? T else {
+            guard let v = v as? Self else {
                 continue
             }
             return v
         }
         fatalError()
-    }
-}
-
-extension View {
-    @MainActor static func getTestView(timeout: TimeInterval = 1) async throws -> Self {
-        // normally we get notification immediately but if there is any problem we dont want to wait forever
-        try await NotificationCenter.default.getBodyEvaluationObject(timeout: timeout)
     }
 }
