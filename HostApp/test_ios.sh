@@ -1,0 +1,1 @@
+sh test_project.sh 'platform=iOS Simulator,name=Any iOS Simulator Device'
