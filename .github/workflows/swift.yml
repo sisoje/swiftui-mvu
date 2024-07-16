@@ -16,7 +16,10 @@ jobs:
 
     steps:
     - uses: actions/checkout@v4
-    - name: Build
-      run: swift build -v
-    - name: Run tests
-      run: swift test -v
+    - uses: jdx/mise-action@v2
+    - name: Setup host app using tuist
+      run: sh generate_project.sh
+      working-directory: ./HostApp
+    - name: Run tests for iOS
+      run: sh test_project.sh 'platform=iOS Simulator,name=Any iOS Simulator Device'
+      working-directory: ./HostApp
