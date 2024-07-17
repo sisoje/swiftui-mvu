@@ -2,7 +2,7 @@ import SwiftUI
 
 struct TaskWrapper {
     @MainActor fileprivate static var debugIds: Set<UUID> = []
-    private(set) var id = UUID()
+    var id = UUID()
     var asyncFunction: @Sendable () async -> Void = {}
 }
 
