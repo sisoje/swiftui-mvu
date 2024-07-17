@@ -23,18 +23,21 @@ jobs:
     - name: Setup host app using tuist
       run: sh generate_project.sh
       working-directory: ./HostApp
-    - name: Run tests for macOS
+    - name: Test macOS
       run: sh test_project.sh 'platform=macOS,name=Any Mac'
       working-directory: ./HostApp
-    - name: Run tests for iOS
+    - name: Test macOS (Mac Catalyst)
+      run: sh test_project.sh 'platform=macOS,varint=Mac Catalyst,name=Any Mac'
+      working-directory: ./HostApp
+    - name: Test iOS
       run: sh test_project.sh 'platform=iOS Simulator,name=Any iOS Simulator Device'
       working-directory: ./HostApp
-    - name: Run tests for tvOS
+    - name: Test tvOS
       run: sh test_project.sh 'platform=tvOS Simulator,name=Any tvOS Simulator Device'
       working-directory: ./HostApp
-    - name: Run tests for watchOS
+    - name: Test watchOS
       run: sh test_project.sh 'platform=watchOS Simulator,name=Any watchOS Simulator Device'
       working-directory: ./HostApp
-    - name: Run tests for visionOS
+    - name: Test visionOS
       run: sh test_project.sh 'platform=visionOS Simulator,name=Any visionOS Simulator Device'
       working-directory: ./HostApp
