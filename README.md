@@ -21,4 +21,40 @@ struct LoginModel {
     @State private var password = ""
 }
 
+// MARK: - update (actions)
+private extension LoginModel {
+    func loginAction() {
+        _user.loadSync {
+            try await backendService.getUser(username, password)
+        }
+    }
+}
+
+// MARK: - view (body function)
+extension LoginModel: View {
+    var body: some View {
+        NavigationStack {
+            VStack(spacing: 16) {
+                TextField("Username", text: $username)
+
+                SecureField("Password", text: $password)
+
+                Button("Login", action: loginAction)
+                
+                if _user.state.error != nil {
+                    Text("Error logging in")
+                }
+            }
+            .overlay {
+                if _user.state.isLoading {
+                    ProgressView()
+                }
+            }
+            .navigationDestination(item: $user) { user in
+                UserDetailsView(user: user)
+            }
+        }
+        .taskLoadable(_user.loadable)
+    }
+}
 ```
