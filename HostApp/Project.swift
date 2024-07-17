@@ -26,7 +26,7 @@ let project = Project(
             product: .unitTests,
             bundleId: "io.tuist.HostAppTests",
             infoPlist: .default,
-            sources: ["Tests.swift"],
+            sources: ["dummy.swift"],
             resources: [],
             dependencies: [
                 .target(name: "HostApp"),

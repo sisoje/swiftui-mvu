@@ -1,5 +1,5 @@
 import SwiftUI
 
-public enum ViewHosting {
-    @MainActor public static var hostView: (@MainActor (@MainActor () -> any View) -> Void)!
+enum ViewHosting {
+    @MainActor static var hostView: (@MainActor (@MainActor () -> any View) -> Void)!
 }

@@ -9,10 +9,12 @@ import SwiftUI
 
 @MainActor public extension Loadable {
     func loadAsync(_ asyncThrowingFunc: @MainActor () async throws -> Void) async {
+        DebugLogger.debugLogger?.info("loadAsync started")
         await projectedValue.load(asyncThrowingFunc)
     }
 
     func loadSync(_ asyncThrowingFunc: @escaping @MainActor () async throws -> Void) {
+        DebugLogger.debugLogger?.info("loadSync started")
         $taskWrapper.load { @MainActor in
             await loadAsync(asyncThrowingFunc)
         }

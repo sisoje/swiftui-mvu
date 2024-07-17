@@ -1,7 +1,7 @@
 import OSLog
 
 public protocol DebugLoggable {
-    var debugLogger: Logger? { get }
+    static var debugLogger: Logger? { get }
 }
 
 public extension DebugLoggable {
@@ -17,3 +17,5 @@ public extension DebugLoggable {
         return logger
     }
 }
+
+enum DebugLogger: DebugLoggable {}
