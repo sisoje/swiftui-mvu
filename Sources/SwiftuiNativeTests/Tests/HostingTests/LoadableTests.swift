@@ -14,6 +14,7 @@ final class LoadableTests: HostingTestsBase {}
                 number.task {
                     await _number.loadAsync { await .asyncInc(number) }
                 }
+                .disabled(_number.state.isLoading)
             }
         }
         
@@ -42,6 +43,7 @@ final class LoadableTests: HostingTestsBase {}
                     _number.loadSync {  await .asyncInc(number) }
                 }
                 .taskLoadable(_number.loadable)
+                .disabled(_number.state.isLoading)
             }
         }
 
