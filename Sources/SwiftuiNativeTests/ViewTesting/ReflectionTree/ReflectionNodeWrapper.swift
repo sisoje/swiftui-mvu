@@ -8,10 +8,6 @@
 import Foundation
 import SwiftUI
 
-extension ReflectionNode: ReflectionNodeWrapper {
-    var node: ReflectionNode { self }
-}
-
 extension ReflectionNodeWrapper {
     func valueNodes<T>(_ t: T.Type = T.self) -> [ValueNodeWrapper<T>] {
         node.allNodes.filter { $0.object is T }.map(ValueNodeWrapper.init)

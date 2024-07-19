@@ -10,7 +10,7 @@ public extension DebugLoggable {
         var logger: Logger?
         assert({
             logger = Logger(
-                subsystem: String(describing: Self.self),
+                subsystem: Bundle.main.bundleIdentifier ?? "",
                 category: String(describing: Self.self)
             )
         }() == ())

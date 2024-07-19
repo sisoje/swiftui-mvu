@@ -14,7 +14,7 @@ final class ViewInteractionTests: XCTestCase {}
 
         let view = DummyView(isOn: .variable(false))
         XCTAssertEqual(view.isOn, false)
-        view.viewSnapshot.body.toggles[0].toggle()
+        view.body.reflectionSnapshot.toggles[0].toggle()
         XCTAssertEqual(view.isOn, true)
     }
 
@@ -28,7 +28,7 @@ final class ViewInteractionTests: XCTestCase {}
 
         let view = DummyView(isOn: .variable(false))
         XCTAssertEqual(view.isOn, false)
-        view.viewSnapshot.body.buttons[0].tap()
+        view.body.reflectionSnapshot.buttons[0].tap()
         XCTAssertEqual(view.isOn, true)
     }
 }
