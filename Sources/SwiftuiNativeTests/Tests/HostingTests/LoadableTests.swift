@@ -7,7 +7,7 @@ final class LoadableTests: HostingTestsBase {}
 @MainActor extension LoadableTests {
     func testLoadAsync() async throws {
         struct Dummy: View {
-            @LoadableValue var number = 0
+            @LoadableState var number = 0
             var state: LoadingState { _number.state }
             var body: some View {
                 let _ = postBodyEvaluationNotification()
@@ -35,7 +35,7 @@ final class LoadableTests: HostingTestsBase {}
 
     func testLoadSync() async throws {
         struct Dummy: View {
-            @LoadableValue var number = 0
+            @LoadableState var number = 0
             var state: LoadingState { _number.state }
             var body: some View {
                 let _ = postBodyEvaluationNotification()
