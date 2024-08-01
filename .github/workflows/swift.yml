@@ -14,8 +14,8 @@ jobs:
     strategy:
       matrix:
         xcode-version: [
-          '15.4',
-          '16.0-beta'
+          '15',
+          'latest'
         ]
 
     runs-on: macos-latest
@@ -31,7 +31,7 @@ jobs:
       working-directory: ./HostApp
 
     - name: Test iOS
-      run: sh test_project.sh 'platform=iOS Simulator,name=Any iOS Simulator Device'
+      run: sh test_project.sh 'platform=iOS Simulator,name=iPhone 15'
       working-directory: ./HostApp
 
     - name: Test macOS
