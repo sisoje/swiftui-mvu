@@ -1,4 +1,4 @@
-# MVU = pure SwiftUI
+# Pure SwiftUI written in an MVU-like style
 ### Introduction
 SwiftUI is already based on Elm / MVU architectural pattern, meaning, this repository demonstrates how to use SwiftUI in the pure form.
 The MVU pattern is known for its simplicity, predictability, and ease of testing, making it an excellent choice for managing state and handling user interactions in modern front-end applications.
