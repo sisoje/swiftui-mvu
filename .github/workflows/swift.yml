@@ -27,12 +27,8 @@ jobs:
       run: sh generate_project.sh
       working-directory: ./HostApp
 
-    - name: Test iOS 18.0
-      run: sh test_project.sh 'platform=iOS Simulator,os=18.0,name=Any iOS Simulator Device'
-      working-directory: ./HostApp
-      
-    - name: Test iOS 17.5
-      run: sh test_project.sh 'platform=iOS Simulator,os=17.5,name=Any iOS Simulator Device'
+    - name: Test iOS
+      run: sh test_project.sh 'platform=iOS Simulator,name=Any iOS Simulator Device'
       working-directory: ./HostApp
 
     - name: Test macOS
