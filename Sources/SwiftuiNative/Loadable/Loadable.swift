@@ -1,6 +1,6 @@
 import SwiftUI
 
-@MainActor @propertyWrapper public struct Loadable: DynamicProperty {
+@propertyWrapper public struct Loadable: DynamicProperty {
     @State var taskWrapper = TaskWrapper()
     public init() {}
     @State public var wrappedValue = LoadingState()

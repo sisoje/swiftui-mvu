@@ -1,6 +1,6 @@
 import SwiftUI
 
-@MainActor public protocol LoadableProjectedValue {
+public protocol LoadableProjectedValue {
     associatedtype T
     var projectedValue: Binding<T> { get }
     var loadable: Loadable { get }
