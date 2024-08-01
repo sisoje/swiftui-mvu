@@ -16,6 +16,7 @@ extension ReflectionNodeWrapper {
     var asyncActions: [ValueNodeWrapper< @Sendable () async -> Void>] { valueNodes() }
 
     var actions: [ValueNodeWrapper<() -> Void>] { valueNodes() }
+    var mainActorActions: [ValueNodeWrapper<@MainActor () -> Void>] { valueNodes() }
 
     var strings: [ValueNodeWrapper<String>] { valueNodes() }
 

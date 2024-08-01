@@ -33,13 +33,17 @@ typealias StateNodeWrapper = DynamicNodeWrapper<State<Any>>
 typealias ToggleNodeWrapper = DynamicNodeWrapper<Toggle<AnyView>>
 typealias ButtonNodeWrapper = DynamicNodeWrapper<Button<AnyView>>
 
-extension ButtonNodeWrapper {
+@MainActor extension ButtonNodeWrapper {
     func tap() {
-        actions[0].value()
+        if let actionNode = mainActorActions.first {
+            actionNode.value()
+        } else {
+            actions[0].value()
+        }
     }
 }
 
-extension ToggleNodeWrapper {
+@MainActor extension ToggleNodeWrapper {
     var isOn: Binding<Bool> {
         let binding = bindings[0]
         if let boolBinding = binding.castAs(Binding<Bool>.self) {
@@ -74,7 +78,7 @@ struct ValueNodeWrapper<T>: ReflectionNodeWrapper {
     }
 }
 
-extension ValueNodeWrapper<Text> {
+@MainActor extension ValueNodeWrapper<Text> {
     var string: String {
         strings[0].value
     }
