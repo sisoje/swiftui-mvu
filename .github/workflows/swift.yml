@@ -13,7 +13,10 @@ jobs:
   build:
     strategy:
       matrix:
-        xcode-version: ['15.4', '16.0-beta']
+        xcode-version: [
+          '15.4',
+          # '16.0-beta'
+        ]
 
     runs-on: macos-latest
 
