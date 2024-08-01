@@ -14,15 +14,15 @@ protocol ReflectionNodeWrapper {
 
 struct DynamicNodeWrapper<BASE>: ReflectionNodeWrapper {
     let node: ReflectionNode
-    
+
     static var baseTypeinfo: TypeInfo {
         TypeInfo(BASE.self)
     }
-    
+
     func castAs<T>(_ t: T.Type = T.self) -> T? {
         node.object as? T
     }
-    
+
     func memoryCast<T>(_ t: T.Type = T.self) -> T {
         CastingUtils.memoryCast(node.object, T.self)
     }
@@ -35,16 +35,7 @@ typealias ButtonNodeWrapper = DynamicNodeWrapper<Button<AnyView>>
 
 extension ButtonNodeWrapper {
     @MainActor func tap() {
-        let (actions1, actions2, actions3) = (actions1, actions2, actions3)
-        if let action = actions1.first {
-            action.value()
-        } else if let action = actions2.first {
-            action.value()
-        } else if let action = actions3.first {
-            action.value()
-        } else {
-            assertionFailure()
-        }
+        actions[0].value()
     }
 }
 
@@ -61,7 +52,7 @@ extension ToggleNodeWrapper {
             dummyBinding.wrappedValue = $0 ? .case0 : .case1
         }
     }
-    
+
     @MainActor func toggle() {
         isOn.wrappedValue.toggle()
     }
@@ -79,7 +70,7 @@ struct ValueNodeWrapper<T>: ReflectionNodeWrapper {
     let node: ReflectionNode
 
     @MainActor var value: T {
-        node.object as! T
+        CastingUtils.memoryCast(node.object)
     }
 }
 

@@ -37,12 +37,12 @@ extension ReflectionNode {
     var allNodes: [ReflectionNode] {
         children.reduce([self]) { $0 + $1.allNodes }
     }
-    
+
     func genericTypeNodes<T>() -> [DynamicNodeWrapper<T>] {
         let typeInfo = DynamicNodeWrapper<T>.baseTypeinfo
         return allNodes.filter { $0.typeInfo.basetype == typeInfo.basetype }.map(DynamicNodeWrapper<T>.init)
     }
-    
+
     func typeNodes<T>(_ t: T.Type = T.self) -> [ValueNodeWrapper<T>] {
         allNodes.filter { $0.object is T }.map(ValueNodeWrapper.init)
     }

@@ -8,22 +8,20 @@
 import Foundation
 import SwiftUI
 
-typealias a1 = @MainActor () -> Void
-typealias a2 = @MainActor () -> Void
-typealias a3 = () -> Void
-
 extension ReflectionNodeWrapper {
     func valueNodes<T>(_ t: T.Type = T.self) -> [ValueNodeWrapper<T>] {
-        let ti = TypeInfo(t)
-        print(ti)
-        return node.allNodes.filter { $0.object is T }.map(ValueNodeWrapper.init)
+        node.allNodes.filter { $0.object is T }.map(ValueNodeWrapper.init)
     }
 
-    var asyncActions: [ValueNodeWrapper< @Sendable () async -> Void>] { valueNodes() }
+    var asyncActions: [ValueNodeWrapper<() async -> Void>] {
+        let t = TypeInfo((() async -> Void).self)
+        return node.allNodes.filter { $0.typeInfo.typename.hasSuffix(t.typename) }.map(ValueNodeWrapper.init)
+    }
 
-    var actions1: [ValueNodeWrapper<a1>] { valueNodes() }
-    var actions2: [ValueNodeWrapper<a2>] { valueNodes() }
-    var actions3: [ValueNodeWrapper<a3>] { valueNodes() }
+    var actions: [ValueNodeWrapper<() -> Void>] {
+        let t = TypeInfo((() -> Void).self)
+        return node.allNodes.filter { $0.typeInfo.typename.hasSuffix(t.typename) }.map(ValueNodeWrapper.init)
+    }
 
     var strings: [ValueNodeWrapper<String>] { valueNodes() }
 
