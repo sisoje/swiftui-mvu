@@ -13,7 +13,7 @@ jobs:
   build:
     strategy:
       matrix:
-        xcode-version: ['15', '16-beta']
+        xcode-version: ['15.4', '16.0-beta']
 
     runs-on: macos-latest
 
@@ -26,17 +26,20 @@ jobs:
     - name: Setup host app using tuist
       run: sh generate_project.sh
       working-directory: ./HostApp
-    - name: Test macOS
-      run: sh test_project.sh 'platform=macOS,name=Any Mac'
-      working-directory: ./HostApp
-    - name: Test macOS (Mac Catalyst)
-      run: sh test_project.sh 'platform=macOS,varint=Mac Catalyst,name=Any Mac'
-      working-directory: ./HostApp
+
     - name: Test iOS 18.0
       run: sh test_project.sh 'platform=iOS Simulator,os=18.0,name=Any iOS Simulator Device'
       working-directory: ./HostApp
+      
     - name: Test iOS 17.5
       run: sh test_project.sh 'platform=iOS Simulator,os=17.5,name=Any iOS Simulator Device'
+      working-directory: ./HostApp
+
+    - name: Test macOS
+      run: sh test_project.sh 'platform=macOS,name=My Mac'
+      working-directory: ./HostApp
+    - name: Test macOS (Mac Catalyst)
+      run: sh test_project.sh 'platform=macOS,varint=Mac Catalyst,name=Any Mac'
       working-directory: ./HostApp
     - name: Test tvOS
       run: sh test_project.sh 'platform=tvOS Simulator,name=Any tvOS Simulator Device'
