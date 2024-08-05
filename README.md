@@ -1,9 +1,10 @@
-# SwiftUI / MVU
+# SwiftUI - native
 ### Introduction
-SwiftUI is already based on Elm / MVU architectural pattern, meaning, this repository demonstrates how to use SwiftUI in the pure form.
-The MVU pattern is known for its simplicity, predictability, and ease of testing, making it an excellent choice for managing state and handling user interactions in modern front-end applications.
+SwiftUI is based on Elm / MVU architectural pattern, meaning, this repository demonstrates how to use SwiftUI in the pure form and as close to MVU as possible.
 
 ### What is MVU?
+The MVU pattern is known for its simplicity, predictability, and ease of testing, making it an excellent choice for managing state and handling user interactions in modern front-end applications.
+
 The Model-View-Update (MVU) pattern is a simple and effective way to structure applications. It divides the application logic into three distinct parts:
 
 - Model: Represents the state of the current view. It typically includes data structures that hold all the necessary information about the current state. In SwiftUI, views and their state are managed using immutable structs, ensuring a clear and predictable data flow.
