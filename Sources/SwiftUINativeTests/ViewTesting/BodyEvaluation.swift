@@ -6,7 +6,7 @@
 //
 
 import SwiftUI
-@testable import SwiftuiNative
+@testable import SwiftUINative
 
 extension Notification: @unchecked Sendable {
     // this silences the "notification is not sendable" warning

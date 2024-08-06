@@ -14,7 +14,7 @@ let project = Project(
             sources: ["App.swift"],
             resources: [],
             dependencies: [
-                 .package(product: "SwiftuiNative"),
+                 .package(product: "SwiftUINative"),
             ],
             additionalFiles: [
                 .folderReference(path: "..")
@@ -30,7 +30,7 @@ let project = Project(
             resources: [],
             dependencies: [
                 .target(name: "HostApp"),
-                .package(product: "SwiftuiNativeTests")
+                .package(product: "SwiftUINativeTests")
             ]
         ),
     ]

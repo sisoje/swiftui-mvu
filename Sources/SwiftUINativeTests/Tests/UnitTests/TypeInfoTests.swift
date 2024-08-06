@@ -8,7 +8,6 @@ final class TypeInfoTests: XCTestCase {
         let t2 = TypeInfo(object: b)
         XCTAssertEqual(t1, t2)
         XCTAssertEqual(t1.basetype, "SwiftUI.Binding")
-        XCTAssertEqual(t1.subtype, "Any")
         XCTAssertEqual(t1.typename, "SwiftUI.Binding<Any>")
     }
 
@@ -18,7 +17,6 @@ final class TypeInfoTests: XCTestCase {
         let t2 = TypeInfo(object: int)
         XCTAssertEqual(t1, t2)
         XCTAssertEqual(t1.basetype, "Swift.Int")
-        XCTAssertEqual(t1.subtype, "")
         XCTAssertEqual(t1.typename, "Swift.Int")
     }
 }

@@ -1,5 +1,5 @@
 import SwiftUI
-@testable import SwiftuiNative
+@testable import SwiftUINative
 import XCTest
 
 final class LoadableTests: HostingTestsBase {}

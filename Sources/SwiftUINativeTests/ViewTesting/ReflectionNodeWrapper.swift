@@ -1,14 +1,13 @@
-//
-//  File.swift
-//
-//
-//  Created by Lazar on 12/07/2024.
-//
-
-import Foundation
-import SwiftUI
+protocol ReflectionNodeWrapper {
+    var node: ReflectionNode { get }
+}
 
 extension ReflectionNodeWrapper {
+    func genericTypeNodes<T>() -> [DynamicNodeWrapper<T>] {
+        let typeInfo = TypeInfo(T.self)
+        return node.allNodes.filter { $0.typeInfo.basetype == typeInfo.basetype }.map(DynamicNodeWrapper<T>.init)
+    }
+    
     func valueNodes<T>(_ t: T.Type = T.self) -> [ValueNodeWrapper<T>] {
         node.allNodes.filter { $0.object is T }.map(ValueNodeWrapper.init)
     }
@@ -25,37 +24,44 @@ extension ReflectionNodeWrapper {
 
     var strings: [ValueNodeWrapper<String>] { valueNodes() }
 
-    var images: [ValueNodeWrapper<Image>] { valueNodes() }
+    var images: [ImageWrapper] { valueNodes() }
 
-    var texts: [ValueNodeWrapper<Text>] { valueNodes() }
+    var texts: [TextWrapper] { valueNodes() }
 
     var bindings: [BindingNodeWrapper] {
-        node.genericTypeNodes()
+        genericTypeNodes()
     }
 
     var states: [StateNodeWrapper] {
-        node.genericTypeNodes()
+        genericTypeNodes()
     }
 
     var toggles: [ToggleNodeWrapper] {
-        node.genericTypeNodes()
+        genericTypeNodes()
     }
 
     var buttons: [ButtonNodeWrapper] {
-        node.genericTypeNodes()
+        genericTypeNodes()
     }
-
-    var refreshableModifiers: [RefreshableNodeWrapper] {
+    
+    var refreshableModifiers: [RefreshableWrapper] {
         func isRefreshableModifier(_ ref: ReflectionNode) -> Bool {
             ref.typeInfo.basetype.hasPrefix("SwiftUI.") && ref.typeInfo.basetype.hasSuffix(".RefreshableModifier")
         }
-        return node.allNodes.filter { isRefreshableModifier($0) }.map(RefreshableNodeWrapper.init)
+        return node.allNodes.filter { isRefreshableModifier($0) }.map(RefreshableWrapper.init)
     }
     
-    var taskModifiers: [TaskNodeWrapper] {
+    var taskModifiers: [TaskWrapper] {
         func isRefreshableModifier(_ ref: ReflectionNode) -> Bool {
             ref.typeInfo.basetype.hasPrefix("SwiftUI.") && ref.typeInfo.basetype.hasSuffix("._TaskModifier")
         }
-        return node.allNodes.filter { isRefreshableModifier($0) }.map(TaskNodeWrapper.init)
+        return node.allNodes.filter { isRefreshableModifier($0) }.map(TaskWrapper.init)
+    }
+    
+    var onAppearModifiers: [OnAppearWrapper] {
+        func isRefreshableModifier(_ ref: ReflectionNode) -> Bool {
+            ref.typeInfo.basetype.hasPrefix("SwiftUI.") && ref.typeInfo.basetype.hasSuffix("._AppearanceActionModifier")
+        }
+        return node.allNodes.filter { isRefreshableModifier($0) }.map(OnAppearWrapper.init)
     }
 }
