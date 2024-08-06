@@ -4,7 +4,7 @@ public struct ViewTestingApp: App {
     public init() {}
     @State private var view: any View = EmptyView()
 
-    private func hostView(@ViewBuilder content: @MainActor () -> any View) {
+    @MainActor private func hostView(@ViewBuilder content: @MainActor () -> any View) {
         view = content().id(UUID())
     }
 
