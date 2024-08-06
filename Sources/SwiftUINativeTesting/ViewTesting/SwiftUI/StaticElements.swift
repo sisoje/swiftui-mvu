@@ -1,7 +1,7 @@
 import SwiftUI
 
-typealias TextReflection = TypeNodeReflection<Text>
-typealias ImageReflection = TypeNodeReflection<Image>
+typealias TextReflection = TypedNodeReflection<Text>
+typealias ImageReflection = TypedNodeReflection<Image>
 
 extension TextReflection {
     var string: String {

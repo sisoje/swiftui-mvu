@@ -1,6 +1,6 @@
 import SwiftUINative
 
-struct TypeNodeReflection<T>: ReflectionNodeWrapper {
+struct TypedNodeReflection<T>: ReflectionNodeWrapper {
     let node: ReflectionNode
 
     var value: T {
