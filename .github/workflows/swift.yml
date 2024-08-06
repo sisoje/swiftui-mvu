@@ -30,16 +30,16 @@ jobs:
       run: sh generate_project.sh
       working-directory: ./HostApp
 
-    - name: Test iOS
-      run: sh test_project.sh 'platform=iOS Simulator,name=iPhone 15'
-      working-directory: ./HostApp
-
     - name: Test macOS
-      run: sh test_project.sh 'platform=macOS,name=My Mac'
+      run: sh test_project.sh 'platform=macOS,name=Any Mac'
       working-directory: ./HostApp
 
     - name: Test macOS (Mac Catalyst)
       run: sh test_project.sh 'platform=macOS,varint=Mac Catalyst,name=Any Mac'
+      working-directory: ./HostApp
+
+    - name: Test iOS
+      run: sh test_project.sh 'platform=iOS Simulator,name=Any iOS Simulator Device'
       working-directory: ./HostApp
 
     - name: Test tvOS
