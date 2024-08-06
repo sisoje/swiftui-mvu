@@ -4,7 +4,7 @@ struct GenericNodeReflection<BASE>: ReflectionNodeWrapper {
     let node: ReflectionNode
 
     static var basetype: String {
-        TypeUtils.basetype(TypeUtils.typename(BASE.self))
+        TypeInfo(BASE.self).baseTypename
     }
     
     var basetype: String {
