@@ -1,3 +1,5 @@
+rm -rf TestResults.xcresult
+
 xcodebuild \
 -configuration "Debug" \
 -project HostApp.xcodeproj \
