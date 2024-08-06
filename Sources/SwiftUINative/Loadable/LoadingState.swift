@@ -5,7 +5,7 @@ public struct LoadingState {
     public var error: Error?
 }
 
-extension Binding<LoadingState> {
+@MainActor extension Binding<LoadingState> {
     func load(_ throwableFunc: () async throws -> Void) async {
         DebugLogger.debugLogger?.info("load starting")
         wrappedValue = LoadingState(isLoading: true)
