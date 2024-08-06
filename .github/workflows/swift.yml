@@ -36,7 +36,7 @@ jobs:
     
     - uses: kishikawakatsumi/xcresulttool@v1
       with:
-        path: TestResults.xcresult
+        path: HostApp/TestResults.xcresult
       if: success() || failure()
 
     - name: Test macOS (Mac Catalyst)
