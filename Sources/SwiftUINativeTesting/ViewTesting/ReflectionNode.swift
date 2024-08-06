@@ -6,7 +6,7 @@ final class ReflectionNode: @unchecked Sendable {
         self.depth = depth
         self.object = object
         self.label = label
-        self.typeInfo = TypeInfo(object: object)
+        self.typename = TypeUtils.typename(object: object)
         self.mirror = Mirror(reflecting: object)
         self.children = mirror.children.enumerated().map { index, node in
             ReflectionNode(object: node.value, label: node.label ?? "", depth: depth + 1, index: index)
@@ -21,7 +21,10 @@ final class ReflectionNode: @unchecked Sendable {
     let label: String
     let object: Any
     let mirror: Mirror
-    let typeInfo: TypeInfo
+    let typename: String
+    var basetype: String {
+        TypeUtils.basetype(typename)
+    }
 }
 
 // MARK: - Filtering

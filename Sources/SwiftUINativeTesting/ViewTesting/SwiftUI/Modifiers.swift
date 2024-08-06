@@ -1,4 +1,4 @@
-struct RefreshableWrapper: ReflectionNodeWrapper {
+struct RefreshableReflection: ReflectionNodeWrapper {
     let node: ReflectionNode
 
     func doRefresh() async {
@@ -6,7 +6,7 @@ struct RefreshableWrapper: ReflectionNodeWrapper {
     }
 }
 
-struct TaskWrapper: ReflectionNodeWrapper {
+struct TaskReflection: ReflectionNodeWrapper {
     let node: ReflectionNode
 
     func runTask() async {
@@ -14,7 +14,7 @@ struct TaskWrapper: ReflectionNodeWrapper {
     }
 }
 
-struct OnAppearWrapper: ReflectionNodeWrapper {
+struct OnAppearReflection: ReflectionNodeWrapper {
     let node: ReflectionNode
 
     func doOnAppear() {

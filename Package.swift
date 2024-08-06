@@ -13,8 +13,8 @@ let package = Package(
             targets: ["SwiftUINative"]
         ),
         .library(
-            name: "SwiftUINativeTests",
-            targets: ["SwiftUINativeTests"]
+            name: "SwiftUINativeTesting",
+            targets: ["SwiftUINativeTesting"]
         ),
     ],
     targets: [
@@ -25,13 +25,13 @@ let package = Package(
             swiftSettings: [.enableExperimentalFeature("StrictConcurrency")]
         ),
         .target(
-            name: "SwiftUINativeTests",
+            name: "SwiftUINativeTesting",
             dependencies: ["SwiftUINative"],
             swiftSettings: [.enableExperimentalFeature("StrictConcurrency")]
         ),
         .testTarget(
             name: "UnitTests",
-            dependencies: ["SwiftUINativeTests"],
+            dependencies: ["SwiftUINativeTesting"],
             swiftSettings: [.enableExperimentalFeature("StrictConcurrency")]
         ),
     ]

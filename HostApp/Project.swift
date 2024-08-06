@@ -30,7 +30,7 @@ let project = Project(
             resources: [],
             dependencies: [
                 .target(name: "HostApp"),
-                .package(product: "SwiftUINativeTests")
+                .package(product: "SwiftUINativeTesting")
             ]
         ),
     ]

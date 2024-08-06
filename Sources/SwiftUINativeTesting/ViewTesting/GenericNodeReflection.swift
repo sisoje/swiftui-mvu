@@ -1,12 +1,14 @@
-struct DynamicNodeWrapper<BASE>: ReflectionNodeWrapper {
+import SwiftUINative
+
+struct GenericNodeReflection<BASE>: ReflectionNodeWrapper {
     let node: ReflectionNode
 
-    static var baseTypeinfo: TypeInfo {
-        TypeInfo(BASE.self)
+    static var basetype: String {
+        TypeUtils.basetype(TypeUtils.typename(BASE.self))
     }
     
-    var baseTypeinfo: TypeInfo {
-        Self.baseTypeinfo
+    var basetype: String {
+        Self.basetype
     }
 
     func cast<T>(_ t: T.Type = T.self) -> T? {

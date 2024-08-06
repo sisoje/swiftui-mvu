@@ -1,10 +1,3 @@
-//
-//  SwiftUITestingSupport.swift
-//  Part2Tests
-//
-//  Created by Lazar on 04/06/2024.
-//
-
 import SwiftUI
 @testable import SwiftUINative
 
