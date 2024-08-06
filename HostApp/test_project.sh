@@ -3,5 +3,5 @@ xcodebuild \
 -project HostApp.xcodeproj \
 -scheme HostApp \
 -destination "$1" \
--resultBundlePath TestResults \
+-resultBundlePath TestResults.xcresult \
 test
