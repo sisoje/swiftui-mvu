@@ -33,11 +33,6 @@ jobs:
     - name: Test macOS
       run: sh test_project.sh 'platform=macOS,name=Any Mac'
       working-directory: ./HostApp
-    
-    - uses: kishikawakatsumi/xcresulttool@v1
-      with:
-        path: HostApp/TestResults.xcresult
-      if: success() || failure()
 
     - name: Test macOS (Mac Catalyst)
       run: sh test_project.sh 'platform=macOS,varint=Mac Catalyst,name=Any Mac'
@@ -58,3 +53,8 @@ jobs:
     - name: Test visionOS
       run: sh test_project.sh 'platform=visionOS Simulator,name=Any visionOS Simulator Device'
       working-directory: ./HostApp
+
+    - uses: kishikawakatsumi/xcresulttool@v1
+      with:
+        path: HostApp/TestResults.xcresult
+      if: !success() || failure()
