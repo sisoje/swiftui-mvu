@@ -17,7 +17,7 @@ final class LoadableTests: HostingTestsBase {}
                 .disabled(_number.state.isLoading)
             }
         }
-        
+
         ViewHosting.hostView {
             Dummy()
         }
@@ -40,7 +40,7 @@ final class LoadableTests: HostingTestsBase {}
             var body: some View {
                 let _ = postBodyEvaluationNotification()
                 number.onAppear {
-                    _number.loadSync {  await .asyncInc(number) }
+                    _number.loadSync { await .asyncInc(number) }
                 }
                 .taskLoadable(_number.loadable)
                 .disabled(_number.state.isLoading)

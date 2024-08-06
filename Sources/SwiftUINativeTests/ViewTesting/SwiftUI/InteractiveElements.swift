@@ -3,13 +3,13 @@ import SwiftUI
 typealias ToggleNodeWrapper = DynamicNodeWrapper<Toggle<AnyView>>
 typealias ButtonNodeWrapper = DynamicNodeWrapper<Button<AnyView>>
 
-@MainActor extension ButtonNodeWrapper {
+extension ButtonNodeWrapper {
     func tap() {
         actions[0].value()
     }
 }
 
-@MainActor extension ToggleNodeWrapper {
+extension ToggleNodeWrapper {
     var isOn: Binding<Bool> {
         let binding = bindings[0]
         if let boolBinding = binding.cast(Binding<Bool>.self) {

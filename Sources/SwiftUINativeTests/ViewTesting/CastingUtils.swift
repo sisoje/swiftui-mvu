@@ -1,10 +1,3 @@
-//
-//  Utils.swift
-//  Part2Tests
-//
-//  Created by Lazar on 09/07/2024.
-//
-
 import Foundation
 
 enum CastingUtils {   

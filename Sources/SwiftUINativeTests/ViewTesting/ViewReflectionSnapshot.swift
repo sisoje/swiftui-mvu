@@ -1,6 +1,6 @@
 import SwiftUI
 
-@MainActor extension View {   
+extension View {   
     var reflectionSnapshot: ValueNodeWrapper<Self> {
         ValueNodeWrapper(node: ReflectionNode(object: self))
     }

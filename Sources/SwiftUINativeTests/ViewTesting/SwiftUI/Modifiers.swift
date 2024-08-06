@@ -1,7 +1,7 @@
 struct RefreshableWrapper: ReflectionNodeWrapper {
     let node: ReflectionNode
 
-    @MainActor func doRefresh() async {
+    func doRefresh() async {
         await asyncActions[0].value()
     }
 }
@@ -9,7 +9,7 @@ struct RefreshableWrapper: ReflectionNodeWrapper {
 struct TaskWrapper: ReflectionNodeWrapper {
     let node: ReflectionNode
 
-    @MainActor func runTask() async {
+    func runTask() async {
         await asyncActions[0].value()
     }
 }
@@ -17,7 +17,7 @@ struct TaskWrapper: ReflectionNodeWrapper {
 struct OnAppearWrapper: ReflectionNodeWrapper {
     let node: ReflectionNode
 
-    @MainActor func doOnAppear() {
+    func doOnAppear() {
         actions[0].value()
     }
 }

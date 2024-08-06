@@ -1,6 +1,6 @@
 import SwiftUI
 
-@MainActor public struct ViewTestingApp: App {
+public struct ViewTestingApp: App {
     public init() {}
     @State private var view: any View = EmptyView()
 

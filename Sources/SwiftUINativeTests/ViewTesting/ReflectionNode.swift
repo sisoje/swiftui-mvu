@@ -1,6 +1,6 @@
 import Foundation
 
-final class ReflectionNode {
+final class ReflectionNode: @unchecked Sendable {
     init(object: Any, label: String = "", depth: Int = 0, index: Int = 0) {
         self.index = index
         self.depth = depth

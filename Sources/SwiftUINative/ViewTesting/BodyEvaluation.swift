@@ -5,7 +5,7 @@ extension Notification.Name {
 }
 
 public extension View {
-    @MainActor func postBodyEvaluationNotification() {
+    func postBodyEvaluationNotification() {
         assert({
             Self._printChanges()
             NotificationCenter.default.post(name: .bodyEvaluationNotification, object: self)

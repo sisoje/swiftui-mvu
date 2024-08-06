@@ -21,7 +21,7 @@ import SwiftUI
     }
 }
 
-@MainActor public extension View {
+public extension View {
     @ViewBuilder func taskLoadable(_ loadable: Loadable) -> some View {
         taskWrapper(loadable.taskWrapper)
     }
