@@ -31,4 +31,22 @@ final class ViewInteractionTests: XCTestCase {}
         view.body.reflectionSnapshot.buttons[0].tap()
         XCTAssertEqual(view.isOn, true)
     }
+
+    func testRefreshable() async {
+        var x = 0
+        let t = EmptyView().refreshable { x = 1 }.reflectionSnapshot
+        let ref = t.refreshableModifiers
+        XCTAssertEqual(ref.count, 1)
+        await ref[0].refresh()
+        XCTAssert(x == 1)
+    }
+    
+    func testTask() async {
+        var x = 0
+        let t = EmptyView().task { x = 1 }.reflectionSnapshot
+        let ref = t.taskModifiers
+        XCTAssertEqual(ref.count, 1)
+        await ref[0].runTask()
+        XCTAssert(x == 1)
+    }
 }

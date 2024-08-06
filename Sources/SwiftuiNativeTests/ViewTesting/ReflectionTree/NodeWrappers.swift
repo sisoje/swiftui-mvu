@@ -66,6 +66,14 @@ struct RefreshableNodeWrapper: ReflectionNodeWrapper {
     }
 }
 
+struct TaskNodeWrapper: ReflectionNodeWrapper {
+    let node: ReflectionNode
+
+    @MainActor func runTask() async {
+        await asyncActions[0].value()
+    }
+}
+
 struct ValueNodeWrapper<T>: ReflectionNodeWrapper {
     let node: ReflectionNode
 

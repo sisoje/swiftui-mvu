@@ -51,4 +51,11 @@ extension ReflectionNodeWrapper {
         }
         return node.allNodes.filter { isRefreshableModifier($0) }.map(RefreshableNodeWrapper.init)
     }
+    
+    var taskModifiers: [TaskNodeWrapper] {
+        func isRefreshableModifier(_ ref: ReflectionNode) -> Bool {
+            ref.typeInfo.basetype.hasPrefix("SwiftUI.") && ref.typeInfo.basetype.hasSuffix("._TaskModifier")
+        }
+        return node.allNodes.filter { isRefreshableModifier($0) }.map(TaskNodeWrapper.init)
+    }
 }
